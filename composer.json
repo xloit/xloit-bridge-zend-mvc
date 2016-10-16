@@ -1,0 +1,44 @@
+{
+    "name": "xloit/xloit-bridge-zend-mvc",
+    "type": "library",
+    "description": "Xloit Bridge Zend Mvc Library",
+    "keywords": [
+        "xloit",
+        "zend-mvc",
+        "library"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Yudha Setiawan",
+            "email": "me@yudhasetiawan.com",
+            "homepage": "http://yudhasetiawan.com/"
+        }
+    ],
+    "require": {
+        "php": "^5.4 || ^7.0",
+        "xloit/xloit-bridge-zend-eventmanager": "^0.0",
+        "xloit/xloit-bridge-zend-log": "^0.0",
+        "xloit/xloit-bridge-zend-servicemanager": "^1.0",
+        "xloit/xloit-bridge-zend-uri": "^0.0",
+        "zendframework/zend-i18n": "^2.7",
+        "zendframework/zend-mvc": "^2.7 || ^3.0",
+        "zendframework/zend-mvc-plugin-flashmessenger": "^1.0",
+        "zendframework/zend-mvc-plugin-prg": "^1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~4.0"
+    },
+    "suggest": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Xloit\\Bridge\\Zend\\Mvc\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-0": {
+            "Xloit\\Bridge\\Zend\\Mvc\\Tests\\": "tests/"
+        }
+    }
+}
