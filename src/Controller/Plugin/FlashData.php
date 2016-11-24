@@ -124,6 +124,7 @@ class FlashData extends AbstractPlugin
             'routeParams'   => $routeMatch->getParams(),
             'routeName'     => $routeMatch->getMatchedRouteName(),
             'requestMethod' => $request->getMethod(),
+            'requestHeader' => (string) $request->getHeaders(),
             'server'        => ArrayUtils::iteratorToArray($request->getServer()),
             'requestQuery'  => ArrayUtils::iteratorToArray($request->getQuery()),
             'requestPost'   => ArrayUtils::iteratorToArray($request->getPost())
