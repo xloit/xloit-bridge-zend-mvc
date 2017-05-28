@@ -32,7 +32,7 @@ interface PluginManagerAwareInterface
      *
      * @param PluginManager $plugins
      *
-     * @return static
+     * @return $this
      */
     public function setControllerPlugins(PluginManager $plugins);
 

@@ -18,8 +18,6 @@
 namespace Xloit\Bridge\Zend\Mvc\Controller;
 
 use Xloit\Bridge\Zend\Mvc\Controller\Plugin;
-use Xloit\Bridge\Zend\Mvc\Exception;
-use Zend\Http\Response;
 use Zend\I18n\Translator\TranslatorAwareInterface;
 use Zend\Log\LoggerInterface;
 use Zend\Mvc\Controller\AbstractRestfulController as ZendAbstractRestfulController;
@@ -47,13 +45,12 @@ abstract class AbstractRestfulController extends ZendAbstractRestfulController i
     use ControllerTrait;
 
     /**
-     * Execute the request
+     * Execute the request.
      *
      * @param MvcEvent $e
      *
      * @return mixed
      * @throws \Zend\Mvc\Exception\DomainException
-     * @throws \Xloit\Bridge\Zend\Mvc\Exception\DomainException
      */
     public function onDispatch(MvcEvent $e)
     {
@@ -84,7 +81,7 @@ abstract class AbstractRestfulController extends ZendAbstractRestfulController i
     }
 
     /**
-     * Pre-request action
+     * Pre-request action.
      *
      * @param MvcEvent $e
      *
@@ -95,7 +92,7 @@ abstract class AbstractRestfulController extends ZendAbstractRestfulController i
     }
 
     /**
-     * Post-request action
+     * Post-request action.
      *
      * @param MvcEvent $e
      *

@@ -68,7 +68,7 @@ class HtmlClass extends AbstractPlugin
      * @param string $value
      * @param string $setType
      *
-     * @return static|Placeholder\HtmlClassContainer
+     * @return $this|Placeholder\HtmlClassContainer
      */
     public function __invoke($key = null, $value = null, $setType = null)
     {
@@ -94,24 +94,12 @@ class HtmlClass extends AbstractPlugin
     }
 
     /**
-     * Retrieve a placeholder container.
-     *
-     * @param  string $key
-     *
-     * @return Placeholder\HtmlClassContainer
-     */
-    public function getContainer($key)
-    {
-        return $this->registry->getContainer($key);
-    }
-
-    /**
      * Set html class.
      *
      * @param string $key
      * @param string $value
      *
-     * @return static
+     * @return $this
      */
     public function set($key, $value)
     {
@@ -126,7 +114,7 @@ class HtmlClass extends AbstractPlugin
      * @param string $key
      * @param string $value
      *
-     * @return static
+     * @return $this
      */
     public function prepend($key, $value)
     {
@@ -141,7 +129,7 @@ class HtmlClass extends AbstractPlugin
      * @param string $key
      * @param string $value
      *
-     * @return static
+     * @return $this
      */
     public function append($key, $value)
     {
@@ -161,12 +149,25 @@ class HtmlClass extends AbstractPlugin
     }
 
     /**
+     * Retrieve a placeholder container.
+     *
+     * @param string $key
+     *
+     * @return Placeholder\HtmlClassContainer
+     */
+    public function getContainer($key)
+    {
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
+        return $this->registry->getContainer($key);
+    }
+
+    /**
      * Set the container for an item in the registry.
      *
-     * @param  string                         $key
-     * @param  Placeholder\HtmlClassContainer $container
+     * @param string                         $key
+     * @param Placeholder\HtmlClassContainer $container
      *
-     * @return static
+     * @return $this
      */
     public function setContainer($key, Placeholder\HtmlClassContainer $container)
     {
@@ -178,7 +179,7 @@ class HtmlClass extends AbstractPlugin
     /**
      * Does a particular container exist?
      *
-     * @param  string $key
+     * @param string $key
      *
      * @return bool
      */
@@ -190,20 +191,21 @@ class HtmlClass extends AbstractPlugin
     /**
      * createContainer.
      *
-     * @param  string $key
-     * @param  array  $value
+     * @param string $key
+     * @param array  $value
      *
      * @return Placeholder\HtmlClassContainer
      */
     public function createContainer($key, array $value = [])
     {
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->registry->createContainer($key, $value);
     }
 
     /**
      * Delete a container.
      *
-     * @param  string $key
+     * @param string $key
      *
      * @return bool
      */

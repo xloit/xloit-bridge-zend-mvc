@@ -56,8 +56,8 @@ class SetupRouterBaseUrl extends AbstractListenerAggregate
      * @param MvcEvent $event
      *
      * @return void
-     * @throws \Interop\Container\Exception\ContainerException
-     * @throws \Interop\Container\Exception\NotFoundException
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      * @throws \Xloit\Std\Exception\RuntimeException
      */
     public function onRoute(MvcEvent $event)

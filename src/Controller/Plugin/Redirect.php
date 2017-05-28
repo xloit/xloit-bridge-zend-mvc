@@ -26,7 +26,7 @@ use Zend\Mvc\MvcEvent;
 use Zend\Router\RouteMatch;
 
 /**
- * A {@link Redirect} class
+ * A {@link Redirect} class.
  *
  * @package Xloit\Bridge\Zend\Mvc\Controller\Plugin
  */
@@ -51,8 +51,6 @@ class Redirect extends ZendRedirect
      *
      * @return \Zend\Http\Response
      * @throws \Xloit\Bridge\Zend\Uri\Exception\RuntimeException
-     * @throws Exception\RuntimeException
-     * @throws Exception\DomainException
      * @throws \Zend\Mvc\Exception\DomainException
      */
     public function toRoute($route = null, $params = [], $options = [], $reuseMatchedParams = false)
@@ -69,9 +67,8 @@ class Redirect extends ZendRedirect
      * @param bool   $reuseMatchedParams
      *
      * @return \Zend\Http\Response
+     * @throws \Xloit\Bridge\Zend\Mvc\Exception\DomainException
      * @throws \Xloit\Bridge\Zend\Uri\Exception\RuntimeException
-     * @throws Exception\DomainException
-     * @throws Exception\RuntimeException
      * @throws \Zend\Mvc\Exception\DomainException
      */
     public function refresh($defaultRoute = null, $params = [], $options = [], $reuseMatchedParams = true)
@@ -112,8 +109,8 @@ class Redirect extends ZendRedirect
      * Generates a URL based on a route.
      *
      * @return RouteMatch
-     * @throws Exception\RuntimeException
-     * @throws Exception\DomainException
+     * @throws \Xloit\Bridge\Zend\Mvc\Exception\DomainException
+     * @throws \Xloit\Bridge\Zend\Mvc\Exception\RuntimeException
      */
     public function getRouteMatch()
     {

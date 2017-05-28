@@ -23,24 +23,23 @@ use Xloit\Bridge\Zend\ServiceManager\AbstractFactory;
 use Zend\ServiceManager\ServiceManager;
 
 /**
- * A {@link ApplicationFactory} class.
+ * An {@link ApplicationFactory} class.
  *
  * @package Xloit\Bridge\Zend\Mvc\Service
  */
 class ApplicationFactory extends AbstractFactory
 {
     /**
-     * Create the Application service (v3)
+     * Create the Application service (v3).
+     * Creates a {@link Application} service, passing it the configuration service and the service manager instance.
      *
-     * Creates a Zend\Mvc\Application service, passing it the configuration
-     * service and the service manager instance.
-     *
-     * @param  ContainerInterface $container
-     * @param  string             $name
-     * @param  null|array         $options
+     * @param ContainerInterface $container
+     * @param string             $name
+     * @param null|array         $options
      *
      * @return Application
-     * @throws \Interop\Container\Exception\ContainerException
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     public function __invoke(ContainerInterface $container, $name, array $options = null)
     {

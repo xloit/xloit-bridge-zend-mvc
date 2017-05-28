@@ -23,7 +23,6 @@ use Zend\Filter;
 use Zend\Http\PhpEnvironment;
 use Zend\Mvc\Application;
 use Zend\Mvc\MvcEvent;
-use Zend\Stdlib\Response;
 
 /**
  * A {@link RouteTrailingSlashListener} class.
@@ -51,8 +50,7 @@ class RouteTrailingSlashListener extends AbstractListenerAggregate
      */
     public function attach(EventManagerInterface $events, $priority = 1000)
     {
-        /** @noinspection TypeUnsafeComparisonInspection */
-        if (PHP_SAPI == 'cli') {
+        if (PHP_SAPI === 'cli') {
             return;
         }
 
@@ -82,7 +80,7 @@ class RouteTrailingSlashListener extends AbstractListenerAggregate
      *
      * @param MvcEvent $event
      *
-     * @return null|Response
+     * @return null|PhpEnvironment\Response
      * @throws \Zend\Http\Exception\InvalidArgumentException
      */
     public function onRouteRemoveTrailingSlash(MvcEvent $event)
@@ -125,35 +123,12 @@ class RouteTrailingSlashListener extends AbstractListenerAggregate
     /**
      *
      *
-     * @return Filter\FilterChain
-     * @throws Filter\Exception\InvalidArgumentException
-     */
-    protected function getInflector()
-    {
-        $inflector = $this->inflector;
-
-        if (null === $inflector) {
-            $inflector = new Filter\FilterChain();
-
-            $inflector->attach(new Filter\Word\DashToCamelCase());
-            $inflector->attach(new Filter\Word\DashToCamelCase('_'));
-
-            $this->inflector = $inflector;
-        }
-
-        return $inflector;
-    }
-
-    /**
-     *
-     *
      * @param MvcEvent $event
      *
      * @return void
-     * @throws \Interop\Container\Exception\NotFoundException
-     * @throws \Interop\Container\Exception\ContainerException
-     * @throws Filter\Exception\InvalidArgumentException
-     * @throws \Zend\ServiceManager\Exception\ServiceNotFoundException
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
+     * @throws \Zend\Filter\Exception\InvalidArgumentException
      */
     public function onRouteNormalizeParameters(MvcEvent $event)
     {
@@ -183,10 +158,32 @@ class RouteTrailingSlashListener extends AbstractListenerAggregate
     /**
      *
      *
+     * @return Filter\FilterChain
+     * @throws \Zend\Filter\Exception\InvalidArgumentException
+     */
+    protected function getInflector()
+    {
+        $inflector = $this->inflector;
+
+        if (null === $inflector) {
+            $inflector = new Filter\FilterChain();
+
+            $inflector->attach(new Filter\Word\DashToCamelCase());
+            $inflector->attach(new Filter\Word\DashToCamelCase('_'));
+
+            $this->inflector = $inflector;
+        }
+
+        return $inflector;
+    }
+
+    /**
+     *
+     *
      * @param string $namespace
      *
      * @return string
-     * @throws Filter\Exception\InvalidArgumentException
+     * @throws \Zend\Filter\Exception\InvalidArgumentException
      */
     protected function filterClassNamespace($namespace)
     {
@@ -200,7 +197,7 @@ class RouteTrailingSlashListener extends AbstractListenerAggregate
      * @param string $controller
      *
      * @return string
-     * @throws Filter\Exception\InvalidArgumentException
+     * @throws \Zend\Filter\Exception\InvalidArgumentException
      */
     protected function deriveClassNamespace($module, $controller)
     {

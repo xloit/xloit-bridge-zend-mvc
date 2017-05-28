@@ -46,7 +46,7 @@ class HtmlClassContainer extends Container
     /**
      *
      *
-     * @return static
+     * @return $this
      */
     public function reset()
     {
@@ -74,7 +74,7 @@ class HtmlClassContainer extends Container
      *
      * @param mixed $value
      *
-     * @return static
+     * @return $this
      */
     public function append($value)
     {
@@ -92,15 +92,17 @@ class HtmlClassContainer extends Container
      *
      * @param string $separator
      *
-     * @return static
+     * @return $this
      */
     public function setSeparator($separator)
     {
         if (!in_array(
-            $separator, [
-            ' ',
-            '-'
-        ], true
+            $separator,
+            [
+                ' ',
+                '-'
+            ],
+            true
         )
         ) {
             $separator = ' ';
@@ -115,9 +117,9 @@ class HtmlClassContainer extends Container
      * Set the indentation string for __toString() serialization, optionally, if a number is passed, it will be the
      * number of spaces.
      *
-     * @param  string|int $indent
+     * @param string|int $indent
      *
-     * @return static
+     * @return $this
      */
     public function setIndent($indent)
     {
@@ -129,9 +131,9 @@ class HtmlClassContainer extends Container
     /**
      * Set postfix for __toString() serialization.
      *
-     * @param  string $postfix
+     * @param string $postfix
      *
-     * @return static
+     * @return $this
      */
     public function setPostfix($postfix)
     {
@@ -143,9 +145,9 @@ class HtmlClassContainer extends Container
     /**
      * Set prefix for __toString() serialization.
      *
-     * @param  string $prefix
+     * @param string $prefix
      *
-     * @return static
+     * @return $this
      */
     public function setPrefix($prefix)
     {

@@ -26,7 +26,7 @@ use Zend\Router\RouteMatch;
 use Zend\Stdlib\ResponseInterface;
 
 /**
- * A {@link Application} class.
+ * An {@link Application} class.
  *
  * @package Xloit\Bridge\Zend\Mvc
  */
@@ -149,7 +149,7 @@ class Application extends ZendApplication
      *
      * @param string $context
      *
-     * @return static
+     * @return $this
      */
     public function setContext($context)
     {
@@ -173,7 +173,7 @@ class Application extends ZendApplication
      *
      * @param string $environment
      *
-     * @return static
+     * @return $this
      */
     public function setEnvironment($environment)
     {
@@ -260,9 +260,9 @@ class Application extends ZendApplication
      *
      * @param array $listeners List of listeners to attach.
      *
-     * @return static
-     * @throws \Interop\Container\Exception\NotFoundException
-     * @throws \Interop\Container\Exception\ContainerException
+     * @return $this
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     public function bootstrap(array $listeners = [])
     {
@@ -294,11 +294,15 @@ class Application extends ZendApplication
                         $context = $name;
 
                         break;
-                    } elseif (fnmatch($value, $matchedRouteName)) {
+                    }
+
+                    if (fnmatch($value, $matchedRouteName)) {
                         $context = $name;
 
                         break;
-                    } elseif (fnmatch($value . '*', $matchedRouteName)) {
+                    }
+
+                    if (fnmatch($value . '*', $matchedRouteName)) {
                         $context = $name;
 
                         break;
@@ -353,7 +357,7 @@ class Application extends ZendApplication
      * This method overrides the behavior of {@link Zend\Mvc\Application} to wrap the trigger of the route event in
      * a try/catch block, allowing us to catch route listener exceptions and trigger the dispatch.error event.
      *
-     * @return static
+     * @return $this
      */
     public function run()
     {
@@ -425,7 +429,7 @@ class Application extends ZendApplication
      * @param MvcEvent              $event
      * @param EventManagerInterface $events
      *
-     * @return static
+     * @return $this
      */
     protected function handleException($exception, MvcEvent $event, EventManagerInterface $events)
     {
@@ -453,7 +457,7 @@ class Application extends ZendApplication
      * @param MvcEvent              $event
      * @param ResponseInterface     $response
      *
-     * @return static
+     * @return $this
      */
     protected function completeResponse(EventManagerInterface $events, MvcEvent $event, ResponseInterface $response)
     {
@@ -465,6 +469,21 @@ class Application extends ZendApplication
         $events->triggerEvent($event);
 
         $this->response = $response;
+
+        return $this;
+    }
+
+    /**
+     * Complete the request.
+     * Triggers "render" and "finish" events, and returns response from event object.
+     *
+     * @param MvcEvent $event
+     *
+     * @return $this
+     */
+    protected function completeRequest(MvcEvent $event)
+    {
+        parent::completeRequest($event);
 
         return $this;
     }

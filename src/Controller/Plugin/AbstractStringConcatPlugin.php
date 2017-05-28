@@ -66,7 +66,7 @@ abstract class AbstractStringConcatPlugin extends AbstractPlugin
      *
      * @param string $separator
      *
-     * @return static
+     * @return $this
      */
     public function setSeparator($separator)
     {
@@ -80,7 +80,7 @@ abstract class AbstractStringConcatPlugin extends AbstractPlugin
      * @param string $value
      * @param string $setType
      *
-     * @return static
+     * @return $this
      */
     public function __invoke($value = null, $setType = null)
     {
@@ -116,7 +116,7 @@ abstract class AbstractStringConcatPlugin extends AbstractPlugin
      *
      * @param string $value
      *
-     * @return static
+     * @return $this
      */
     public function set($value)
     {
@@ -130,7 +130,7 @@ abstract class AbstractStringConcatPlugin extends AbstractPlugin
      *
      * @param string $value
      *
-     * @return static
+     * @return $this
      */
     public function prepend($value)
     {
@@ -144,7 +144,7 @@ abstract class AbstractStringConcatPlugin extends AbstractPlugin
      *
      * @param string $value
      *
-     * @return static
+     * @return $this
      */
     public function append($value)
     {

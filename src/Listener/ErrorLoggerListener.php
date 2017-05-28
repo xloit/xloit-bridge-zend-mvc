@@ -68,8 +68,6 @@ class ErrorLoggerListener extends AbstractListenerAggregate implements LoggerAwa
      * @param MvcEvent $e
      *
      * @return void
-     * @throws \Zend\Log\Exception\InvalidArgumentException
-     * @throws \Zend\Log\Exception\RuntimeException
      */
     public function logError(MvcEvent $e)
     {

@@ -50,12 +50,12 @@ class Log extends AbstractPlugin implements LoggerAwareInterface
     /**
      * Proxy to the registered logger.
      *
-     * @param  string $method
-     * @param  array  $args
+     * @param string $method
+     * @param array  $args
      *
      * @return mixed
-     * @throws Exception\BadMethodCallException
-     * @throws Exception\RuntimeException
+     * @throws \Xloit\Bridge\Zend\Mvc\Exception\BadMethodCallException
+     * @throws \Xloit\Bridge\Zend\Mvc\Exception\RuntimeException
      */
     public function __call($method, $args)
     {
@@ -83,7 +83,7 @@ class Log extends AbstractPlugin implements LoggerAwareInterface
      *
      * @param LoggerInterface $logger
      *
-     * @return static
+     * @return $this
      */
     public function setLogger(LoggerInterface $logger)
     {

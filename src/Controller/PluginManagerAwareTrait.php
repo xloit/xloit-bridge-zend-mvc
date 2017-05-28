@@ -43,6 +43,7 @@ trait PluginManagerAwareTrait
      */
     public function getControllerPlugin($plugin)
     {
+        /** @noinspection PhpIncompatibleReturnTypeInspection */
         return $this->getControllerPlugins()->get($plugin);
     }
 
@@ -61,7 +62,7 @@ trait PluginManagerAwareTrait
      *
      * @param PluginManager $plugins
      *
-     * @return static
+     * @return $this
      */
     public function setControllerPlugins(PluginManager $plugins)
     {

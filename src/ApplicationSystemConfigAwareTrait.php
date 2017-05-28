@@ -48,7 +48,7 @@ trait ApplicationSystemConfigAwareTrait
      *
      * @param array $systemConfig
      *
-     * @return static
+     * @return $this
      */
     public function setSystemConfig(array $systemConfig)
     {

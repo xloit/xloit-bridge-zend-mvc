@@ -36,7 +36,7 @@ interface ApplicationSystemConfigAwareInterface
      *
      * @param array $config
      *
-     * @return static
+     * @return $this
      */
     public function setSystemConfig(array $config);
 }

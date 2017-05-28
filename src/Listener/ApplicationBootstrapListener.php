@@ -24,7 +24,7 @@ use Zend\EventManager\EventManagerInterface;
 use Zend\Mvc\MvcEvent;
 
 /**
- * A {@link ApplicationBootstrapListener} class.
+ * An {@link ApplicationBootstrapListener} class.
  *
  * @package Xloit\Bridge\Zend\Mvc\Listener
  */
@@ -59,8 +59,8 @@ class ApplicationBootstrapListener extends AbstractListenerAggregate
      * @param MvcEvent $event
      *
      * @return void
-     * @throws \Interop\Container\Exception\NotFoundException
-     * @throws \Interop\Container\Exception\ContainerException
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      * @throws \Xloit\Std\Exception\RuntimeException
      */
     public function onBootstrapLoadConfig(MvcEvent $event)

@@ -1,9 +1,18 @@
 <?php
 /**
- * This source file is part of Virtupeer project.
+ * This source file is part of Xloit project.
  *
- * @link      https://virtupeer.com
- * @copyright Copyright (c) 2016, Virtupeer. All rights reserved.
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the MIT License that is bundled with this package in the file LICENSE.
+ * It is also available through the world-wide-web at this URL:
+ * <http://www.opensource.org/licenses/mit-license.php>
+ * If you did not receive a copy of the license and are unable to obtain it through the world-wide-web,
+ * please send an email to <license@xloit.com> so we can send you a copy immediately.
+ *
+ * @license   MIT
+ * @link      http://xloit.com
+ * @copyright Copyright (c) 2016, Xloit. All rights reserved.
  */
 
 namespace Xloit\Bridge\Zend\Mvc;
@@ -23,7 +32,8 @@ class Module
      * Return default zend-validator configuration for zend-mvc applications.
      *
      * @return array
-     * @throws \Interop\Container\Exception\ContainerException
+     * @throws \Psr\Container\ContainerExceptionInterface
+     * @throws \Psr\Container\NotFoundExceptionInterface
      */
     public function getConfig()
     {
@@ -42,17 +52,25 @@ class Module
             ],
             'controller_plugins' => [
                 'aliases'   => [
+                    'config'    => Controller\Plugin\Config::class,
+                    'Config'    => Controller\Plugin\Config::class,
                     'flashdata' => Controller\Plugin\FlashData::class,
                     'flashData' => Controller\Plugin\FlashData::class,
                     'FlashData' => Controller\Plugin\FlashData::class,
-                    'config'    => Controller\Plugin\Config::class,
-                    'Config'    => Controller\Plugin\Config::class,
+                    'htmlclass' => Controller\Plugin\HtmlClass::class,
                     'htmlClass' => Controller\Plugin\HtmlClass::class,
+                    'HtmlClass' => Controller\Plugin\HtmlClass::class,
                     'log'       => Controller\Plugin\Log::class,
+                    'Log'       => Controller\Plugin\Log::class,
                     'redirect'  => Controller\Plugin\Redirect::class,
+                    'Redirect'  => Controller\Plugin\Redirect::class,
+                    'headtitle' => Controller\Plugin\Title::class,
                     'headTitle' => Controller\Plugin\Title::class,
+                    'HeadTitle' => Controller\Plugin\Title::class,
                     'title'     => Controller\Plugin\Title::class,
-                    'url'       => Controller\Plugin\Url::class
+                    'Title'     => Controller\Plugin\Title::class,
+                    'url'       => Controller\Plugin\Url::class,
+                    'Url'       => Controller\Plugin\Url::class
                 ],
                 'factories' => [
                     Controller\Plugin\Config::class    => function(ContainerInterface $container) {

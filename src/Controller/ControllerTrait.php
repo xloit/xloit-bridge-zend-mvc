@@ -20,7 +20,7 @@ namespace Xloit\Bridge\Zend\Mvc\Controller;
 use Zend\I18n\Translator\TranslatorAwareTrait;
 
 /**
- * A {@link ControllerTrait} trait
+ * A {@link ControllerTrait} trait.
  *
  * @package Xloit\Bridge\Zend\Mvc\Controller
  */
@@ -63,7 +63,7 @@ trait ControllerTrait
     }
 
     /**
-     * Return matched route
+     * Return matched route.
      *
      * @return \Zend\Router\RouteMatch
      */

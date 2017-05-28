@@ -58,7 +58,8 @@ class MvcPluginManagerInitializer extends AbstractServiceInitializer
         return [
             'xloit.mvc.pluginManager',
             'ControllerPluginManager',
-            'MvcPluginManager'
+            'MvcPluginManager',
+            PluginManager::class
         ];
     }
 

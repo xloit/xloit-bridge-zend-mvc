@@ -45,15 +45,13 @@ class Url extends ZendUrl
     /**
      * Generates a URL based on a route.
      *
-     * @param  string            $route
-     * @param  array|Traversable $params
-     * @param  array|bool        $options
-     * @param  bool              $reuseMatchedParams
+     * @param string            $route
+     * @param array|Traversable $params
+     * @param array|bool        $options
+     * @param bool              $reuseMatchedParams
      *
      * @return string
      * @throws \Xloit\Bridge\Zend\Uri\Exception\RuntimeException
-     * @throws Exception\RuntimeException
-     * @throws Exception\DomainException
      * @throws \Zend\Mvc\Exception\DomainException
      * @throws \Zend\Mvc\Exception\InvalidArgumentException
      * @throws \Zend\Mvc\Exception\RuntimeException
@@ -67,8 +65,8 @@ class Url extends ZendUrl
      * Generates a URL based on a route.
      *
      * @return RouteMatch
-     * @throws Exception\RuntimeException
-     * @throws Exception\DomainException
+     * @throws \Xloit\Bridge\Zend\Mvc\Exception\DomainException
+     * @throws \Xloit\Bridge\Zend\Mvc\Exception\RuntimeException
      */
     public function getRouteMatch()
     {

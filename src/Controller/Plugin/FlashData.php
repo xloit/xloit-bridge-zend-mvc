@@ -48,7 +48,7 @@ class FlashData extends AbstractPlugin
      * @param array        $data
      * @param string|array $routeName
      *
-     * @return static
+     * @return $this
      * @throws \Zend\Session\Exception\InvalidArgumentException
      * @throws \Zend\Stdlib\Exception\InvalidArgumentException
      */
@@ -88,7 +88,7 @@ class FlashData extends AbstractPlugin
      *
      * @param string $name
      *
-     * @return static
+     * @return $this
      */
     public function setName($name)
     {
@@ -163,7 +163,7 @@ class FlashData extends AbstractPlugin
     }
 
     /**
-     * Return the current route data
+     * Return the current route data.
      *
      * @return array
      * @throws \Zend\Session\Exception\InvalidArgumentException
@@ -177,7 +177,7 @@ class FlashData extends AbstractPlugin
     }
 
     /**
-     * Indicates whether current route has data
+     * Indicates whether current route has data.
      *
      * @return bool
      * @throws \Zend\Session\Exception\InvalidArgumentException
@@ -191,7 +191,7 @@ class FlashData extends AbstractPlugin
     }
 
     /**
-     * Remove current route data
+     * Remove current route data.
      *
      * @return bool
      * @throws \Zend\Session\Exception\InvalidArgumentException
