@@ -43,7 +43,7 @@ class FlashData extends AbstractPlugin
     protected $name = 'fd';
 
     /**
-     * Perform Flash data based
+     * Perform Flash data based.
      *
      * @param array        $data
      * @param string|array $routeName
@@ -142,7 +142,7 @@ class FlashData extends AbstractPlugin
     }
 
     /**
-     * Indicates whether current data from the specified route name
+     * Indicates whether current data from the specified route name.
      *
      * @param string $routeName
      *

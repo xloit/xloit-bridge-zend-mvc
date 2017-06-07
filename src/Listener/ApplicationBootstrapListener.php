@@ -33,8 +33,8 @@ class ApplicationBootstrapListener extends AbstractListenerAggregate
     /**
      * Attach one or more listeners
      *
-     * Implementors may add an optional $priority argument; the EventManager
-     * implementation will pass this to the aggregate.
+     * Implementors may add an optional $priority argument; the EventManager implementation will pass this to the
+     * aggregate.
      *
      * @param EventManagerInterface $events
      * @param int                   $priority

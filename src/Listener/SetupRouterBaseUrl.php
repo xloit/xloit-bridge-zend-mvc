@@ -24,7 +24,7 @@ use Zend\Mvc\MvcEvent;
 use Zend\Router\Http\TreeRouteStack;
 
 /**
- * A {@link SetupRouterBaseUrl} class
+ * A {@link SetupRouterBaseUrl} class.
  *
  * @package Xloit\Bridge\Zend\Mvc\Listener
  */
