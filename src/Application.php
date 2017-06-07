@@ -319,10 +319,13 @@ class Application extends ZendApplication
 
         $this->setContext($context);
 
-        // Setup pre bootstrap listeners
-        $preListeners = $this->preBootstrapListeners;
+        // Setup default listeners
+        $listeners = array_unique(array_merge($this->defaultListeners, $listeners));
 
-        foreach ($preListeners as $listener) {
+        // Setup pre bootstrap listeners
+        $listeners = array_unique(array_merge($this->preBootstrapListeners, $listeners));
+
+        foreach ($listeners as $listener) {
             $serviceManager->get($listener)->attach($events);
         }
 
@@ -336,13 +339,6 @@ class Application extends ZendApplication
 
         // Trigger bootstrap events
         $events->triggerEvent($event);
-
-        // Setup default listeners
-        $listeners = array_unique(array_merge($this->defaultListeners, $listeners));
-
-        foreach ($listeners as $listener) {
-            $serviceManager->get($listener)->attach($events);
-        }
 
         $event->setName(MvcEvent::EVENT_BOOTSTRAP);
 
