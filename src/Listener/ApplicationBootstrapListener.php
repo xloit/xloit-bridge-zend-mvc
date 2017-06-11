@@ -74,27 +74,52 @@ class ApplicationBootstrapListener extends AbstractListenerAggregate
         /** @var array $activeContext */
         $activeContext = ArrayUtils::get($applicationContext, $context, []);
         $configuration = $serviceManager->get('Config');
+        $config        = [];
 
-        $configuration = ArrayUtils::merge(
-            $configuration,
+        $config = ArrayUtils::merge(
+            $config,
             ArrayUtils::get($configuration, Application::CONFIG_KEY_CONTEXT . '.' . $context, [])
         );
 
         foreach ($activeContext as $contextPart) {
-            $configuration = ArrayUtils::merge(
-                $configuration,
+            $config = ArrayUtils::merge(
+                $config,
                 ArrayUtils::get($configuration, Application::CONFIG_KEY_CONTEXT . '.' . $contextPart, [])
+            );
+            $config = ArrayUtils::merge(
+                $config,
+                ArrayUtils::get($config, Application::CONFIG_KEY_CONTEXT . '.' . $contextPart, [])
             );
         }
 
-        $configuration = ArrayUtils::merge(
-            $configuration,
+        $config = ArrayUtils::merge(
+            $config,
             ArrayUtils::get($configuration, Application::CONFIG_KEY_ENV . '.' . $application->getEnvironment(), [])
         );
 
+        $config = ArrayUtils::merge(
+            $config,
+            ArrayUtils::get($config, Application::CONFIG_KEY_ENV . '.' . $application->getEnvironment(), [])
+        );
+
+        /** @var \Zend\ModuleManager\ModuleManager $moduleManager */
+        $moduleManager  = $serviceManager->get('ModuleManager');
+        $configListener = $moduleManager->getEvent()->getConfigListener();
+
+        $configListener->setMergedConfig(
+            ArrayUtils::merge(
+                $configListener->getMergedConfig(false),
+                $config
+            )
+        );
+
+        // Tell ServiceManager to load "Config" from the module ConfigListener.
         $allowOverride = $serviceManager->getAllowOverride();
         $serviceManager->setAllowOverride(true);
-        $serviceManager->setService('Config', $configuration);
+        $serviceManager->setService('config', null);
+        $serviceManager->setService('Config', null);
+        $serviceManager->setService('configuration', null);
+        $serviceManager->setService('Configuration', null);
         $serviceManager->setAllowOverride($allowOverride);
     }
 }
