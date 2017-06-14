@@ -238,12 +238,7 @@ class FlashData extends AbstractPlugin
             $routeName  = $routeMatch->getMatchedRouteName();
         }
 
-        $routeName = str_replace(
-            [
-                '\\',
-                '/'
-            ], '_', $routeName
-        );
+        $routeName = preg_replace('/[^a-zA-Z0-9]+/','_', $routeName);
 
         if (array_key_exists($routeName, $this->sessions)) {
             return $this->sessions[$routeName];
